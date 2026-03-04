@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  # 后端服务
+  server:
+    build: ./
+    container_name: nodejs-server-new
+    ports:
+      - "3001:3000"
+    networks:
+      - app-network
+    restart: always
+
+  # （可选）如果有前端项目，添加以下配置
+  # client:
+  #   build: ./client
+  #   container_name: react-client
+  #   ports:
+  #     - "8080:80"
+  #   networks:
+  #     - app-network
+  #   depends_on:
+  #     - server
+  #   restart: always
+
+networks:
+  app-network:
+    driver: bridge
